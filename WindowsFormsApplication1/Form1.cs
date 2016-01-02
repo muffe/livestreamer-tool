@@ -37,9 +37,12 @@ namespace WindowsFormsApplication1
         private void Form1_Load(object sender, EventArgs e)
         {
             ImageList Imagelist = new ImageList();
+            Imagelist.ImageSize = new Size(256, 140);
+            Imagelist.ColorDepth = ColorDepth.Depth32Bit;
             //listView1.View = View.Details;
             listView1.LargeImageList = Imagelist;
             listView1.SmallImageList = Imagelist;
+            listView1.TileSize = new Size(320,400);
         
             if (!ExistsOnPath("livestreamer.exe"))
             {

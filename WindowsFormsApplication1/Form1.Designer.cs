@@ -38,7 +38,7 @@
             this.Stream});
             this.listView1.Location = new System.Drawing.Point(12, 12);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(495, 341);
+            this.listView1.Size = new System.Drawing.Size(1094, 681);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
@@ -51,7 +51,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 365);
+            this.ClientSize = new System.Drawing.Size(1118, 705);
             this.Controls.Add(this.listView1);
             this.Name = "Form1";
             this.Text = "Twitch.tv livestreamer";
