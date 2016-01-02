@@ -85,6 +85,7 @@ namespace WindowsFormsApplication1
                 this.listView1.Items.Add(new ListViewItem { ImageIndex = i, Text = st });
                 i++;        
             }
+            this.listView1.Click += new System.EventHandler(this.listView1_Click);
         }
 
             private string getHTML(string URL)
@@ -93,22 +94,24 @@ namespace WindowsFormsApplication1
                 return new System.Text.UTF8Encoding().GetString(objWC.DownloadData(URL));
             }
 
-            private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-            {
+        private void listView1_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0) { 
+                int i = listView1.SelectedIndices[0];
+                Console.WriteLine("Selected " + this.streams["streams"][i]["channel"]["display_name"]);
 
-                //Console.WriteLine("Selected " + this.streams["streams"][this.listView1.SelectedIndices]["channel"]["display_name"]);
+                string channelName = this.streams["streams"][i]["channel"]["name"].ToString();
 
-               // string channelName = this.streams["streams"][this.listView1.SelectedIndex]["channel"]["name"].ToString();
-
-                //Process process = new Process();
+                Process process = new Process();
                 // Configure the process using the StartInfo properties.
-                //process.StartInfo.FileName = "livestreamer";
-                //process.StartInfo.Arguments = "twitch.tv/" + channelName + " source";
-                //process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
-                //process.Start();
-            }
+                process.StartInfo.FileName = "livestreamer";
+                process.StartInfo.Arguments = "twitch.tv/" + channelName + " source";
+                process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                process.Start();
+         }
+           }
 
-            public static bool ExistsOnPath(string fileName)
+        public static bool ExistsOnPath(string fileName)
             {
                 if (GetFullPath(fileName) != null)
                     return true;

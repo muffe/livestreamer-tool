@@ -34,6 +34,7 @@
             // 
             // listView1
             // 
+            this.listView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Stream});
             this.listView1.Location = new System.Drawing.Point(12, 12);
@@ -41,7 +42,6 @@
             this.listView1.Size = new System.Drawing.Size(1094, 681);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // Stream
             // 
