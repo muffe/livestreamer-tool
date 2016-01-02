@@ -36,8 +36,12 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            if (ExistsOnPath("livestreamer.exe"))
+            ImageList Imagelist = new ImageList();
+            //listView1.View = View.Details;
+            listView1.LargeImageList = Imagelist;
+            listView1.SmallImageList = Imagelist;
+        
+            if (!ExistsOnPath("livestreamer.exe"))
             {
                 DialogResult res = MessageBox.Show("livestreamer doesn't seem to be installed. We need livestreamer. Do you want to install that now?", "Stop!", MessageBoxButtons.YesNo);
                 if (res == DialogResult.Yes)
@@ -61,10 +65,22 @@ namespace WindowsFormsApplication1
             string HTML = this.getHTML("https://api.twitch.tv/kraken/streams");
 
             this.streams = JObject.Parse(HTML);
+            int i = 0;
             foreach(JToken stream in this.streams["streams"])
             {
-                string st = (stream["channel"]["display_name"] + " playing " + stream["game"] + " for " + stream["viewers"] + " viewers");
-                this.listBox1.Items.Add(st);
+                //retrieve all image files
+                string imagePath = stream["preview"]["medium"].ToString();
+
+                //Add images to Imagelist
+                WebClient wc = new WebClient();
+                byte[] bytes = wc.DownloadData(imagePath);
+                MemoryStream ms = new MemoryStream(bytes);
+                System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
+                Imagelist.Images.Add(img);                
+
+                string st = (stream["channel"]["display_name"] + " playing " + stream["game"] + " for " + stream["viewers"] + " viewers (" + stream["channel"]["status"] + ")");
+                this.listView1.Items.Add(new ListViewItem { ImageIndex = i, Text = st });
+                i++;        
             }
         }
 
@@ -74,18 +90,19 @@ namespace WindowsFormsApplication1
                 return new System.Text.UTF8Encoding().GetString(objWC.DownloadData(URL));
             }
 
-            private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+            private void listView1_SelectedIndexChanged(object sender, EventArgs e)
             {
-                Console.WriteLine("Selected " + this.streams["streams"][this.listBox1.SelectedIndex]["channel"]["display_name"]);
 
-                string channelName = this.streams["streams"][this.listBox1.SelectedIndex]["channel"]["name"].ToString();
+                //Console.WriteLine("Selected " + this.streams["streams"][this.listView1.SelectedIndices]["channel"]["display_name"]);
 
-                Process process = new Process();
+               // string channelName = this.streams["streams"][this.listView1.SelectedIndex]["channel"]["name"].ToString();
+
+                //Process process = new Process();
                 // Configure the process using the StartInfo properties.
-                process.StartInfo.FileName = "livestreamer";
-                process.StartInfo.Arguments = "twitch.tv/" + channelName + " source";
-                process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
-                process.Start();
+                //process.StartInfo.FileName = "livestreamer";
+                //process.StartInfo.Arguments = "twitch.tv/" + channelName + " source";
+                //process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                //process.Start();
             }
 
             public static bool ExistsOnPath(string fileName)
