@@ -37,10 +37,12 @@ namespace WindowsFormsApplication1
         
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.MainMenuStrip = this.menuStrip1;
+            
             ImageList Imagelist = new ImageList();
             Imagelist.ImageSize = new Size(256, 140);
             Imagelist.ColorDepth = ColorDepth.Depth32Bit;
-            //listView1.View = View.Details;
+            listView1.View = View.Details;
             listView1.LargeImageList = Imagelist;
             listView1.SmallImageList = Imagelist;
             listView1.TileSize = new Size(320,400);
@@ -86,6 +88,8 @@ namespace WindowsFormsApplication1
                     i++;
                 }
                 this.listView1.Click += new System.EventHandler(this.listView1_Click);
+
+                this.listView1.Columns[0].Width = Width - 4 - SystemInformation.VerticalScrollBarWidth;
             }
         }
 
