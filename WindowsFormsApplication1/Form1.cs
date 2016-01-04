@@ -32,8 +32,9 @@ namespace WindowsFormsApplication1
             string currentPath = Path.GetDirectoryName(Application.ExecutablePath);
             var process = Process.Start(currentPath + "\\livestreamer-installer.exe");
             process.WaitForExit();
+            ;
         }
-
+        
         private void Form1_Load(object sender, EventArgs e)
         {
             ImageList Imagelist = new ImageList();

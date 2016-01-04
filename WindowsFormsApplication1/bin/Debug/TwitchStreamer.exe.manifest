@@ -66,17 +66,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwitchStreamer.exe" size="532408">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwitchStreamer.exe" size="230328">
       <assemblyIdentity name="TwitchStreamer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>5NWmcg0E+x/aMHjXlRzP1+QIwDmI3II1h7vqVSILzhY=</dsig:DigestValue>
+        <dsig:DigestValue>W4Ekrk12EajiLhxdUw4w0a59ca8pNNx9IuO92T1CnYc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
+  <file name="FodyWeavers.xml" size="77" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>DnKBIIMoiPS2CrKLlaELmY2fI4Rv/81ohhr+mG0h9wU=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="TwitchStreamer.exe.config" size="540">
     <hash>
       <dsig:Transforms>

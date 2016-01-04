@@ -33,3 +33,4 @@ C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\obj\Debug\Tw
 C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\obj\Debug\TwitchStreamer.application
 C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\obj\Debug\TwitchStreamer.exe
 C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\obj\Debug\TwitchStreamer.pdb
+C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.dll
