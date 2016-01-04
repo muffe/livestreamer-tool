@@ -222,5 +222,10 @@ namespace WindowsFormsApplication1
             this.selectedGame = game;
             this.loadStreams();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.loadStreams();
+        }
     }
 }
