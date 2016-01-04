@@ -37,7 +37,6 @@ namespace WindowsFormsApplication1
             string currentPath = Path.GetDirectoryName(Application.ExecutablePath);
             var process = Process.Start(currentPath + "\\livestreamer-installer.exe");
             process.WaitForExit();
-            ;
         }
 
 
@@ -138,6 +137,12 @@ namespace WindowsFormsApplication1
 
         private void listView1_Click(object sender, EventArgs e)
         {
+            Process[] pname = Process.GetProcessesByName("livestreamer");
+            if (pname.Length != 0)
+            {
+                return;
+            }
+
             if (listView1.SelectedItems.Count > 0) { 
                 int i = listView1.SelectedIndices[0];
                 Console.WriteLine("Selected " + this.streams["streams"][i]["channel"]["display_name"]);
@@ -172,7 +177,6 @@ namespace WindowsFormsApplication1
                 foreach (var path in values.Split(';'))
                 {
                     var fullPath = Path.Combine(path, fileName);
-                    Console.WriteLine(fullPath);
                     if (File.Exists(fullPath))
                         return fullPath;
                 }
