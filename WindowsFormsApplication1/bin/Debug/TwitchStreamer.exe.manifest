@@ -66,14 +66,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwitchStreamer.exe" size="233400">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwitchStreamer.exe" size="234936">
       <assemblyIdentity name="TwitchStreamer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Sfi8Z+uCQb2R8eJZk9sG8wxzO+w60dzevhwmSEIXhvs=</dsig:DigestValue>
+        <dsig:DigestValue>KcPfNSzdqP3afnECHN1k5Hu3rkWoPr3kXu8sGMd+sV0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

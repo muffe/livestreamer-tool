@@ -41,6 +41,7 @@
             this.highToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.middleToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.lowToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -148,11 +149,24 @@
             this.lowToolStripMenuItem1.Text = "Low";
             this.lowToolStripMenuItem1.Click += new System.EventHandler(this.lowToolStripMenuItem1_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(76, 3);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(301, 21);
+            this.comboBox1.TabIndex = 2;
+            this.comboBox1.Text = "Choose a game";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1118, 705);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -181,6 +195,7 @@
         private System.Windows.Forms.ToolStripMenuItem highToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem middleToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem lowToolStripMenuItem1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

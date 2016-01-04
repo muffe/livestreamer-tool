@@ -23,6 +23,9 @@ namespace WindowsFormsApplication1
 
         private String quality = "source";
         private JObject streams;
+        private JObject games;
+        private String selectedGame = null;
+        private ImageList imageList;
 
         public Form1()
         {
@@ -36,17 +39,33 @@ namespace WindowsFormsApplication1
             process.WaitForExit();
             ;
         }
+
+
+        private void getGameList()
+        {
+            string HTML = this.getHTML("https://api.twitch.tv/kraken/games/top?limit=100");
+
+            this.games = JObject.Parse(HTML);
+            foreach (JToken game in this.games["top"])
+            {           
+                string gameName = (game["game"]["name"].ToString());
+                this.comboBox1.Items.Add(gameName);           
+            }
+        
+        }
         
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.getGameList();
             this.MainMenuStrip = this.menuStrip1;
-            
-            ImageList Imagelist = new ImageList();
-            Imagelist.ImageSize = new Size(256, 140);
-            Imagelist.ColorDepth = ColorDepth.Depth32Bit;
+
+            this.imageList = new ImageList();
+            this.imageList.ImageSize = new Size(256, 140);
+            this.imageList.ColorDepth = ColorDepth.Depth32Bit;
+
             listView1.View = View.Details;
-            listView1.LargeImageList = Imagelist;
-            listView1.SmallImageList = Imagelist;
+            listView1.LargeImageList = this.imageList;
+            listView1.SmallImageList = this.imageList;
             listView1.TileSize = new Size(320,400);
 
             if (!ExistsOnPath("livestreamer.exe"))
@@ -68,31 +87,47 @@ namespace WindowsFormsApplication1
                     Application.Exit();
                 }
             }
-            else {          
-                string HTML = this.getHTML("https://api.twitch.tv/kraken/streams");
-
-                this.streams = JObject.Parse(HTML);
-                int i = 0;
-                foreach (JToken stream in this.streams["streams"])
-                {
-                    //retrieve all image files
-                    string imagePath = stream["preview"]["medium"].ToString();
-
-                    //Add images to Imagelist
-                    WebClient wc = new WebClient();
-                    byte[] bytes = wc.DownloadData(imagePath);
-                    MemoryStream ms = new MemoryStream(bytes);
-                    System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
-                    Imagelist.Images.Add(img);
-
-                    string st = (stream["channel"]["display_name"] + " playing " + stream["game"] + " for " + stream["viewers"] + " viewers (" + stream["channel"]["status"] + ")");
-                    this.listView1.Items.Add(new ListViewItem { ImageIndex = i, Text = st });
-                    i++;
-                }
-                this.listView1.Click += new System.EventHandler(this.listView1_Click);
-
-                this.listView1.Columns[0].Width = Width - 4 - SystemInformation.VerticalScrollBarWidth;
+            else {
+                this.loadStreams();
             }
+        }
+
+        private void loadStreams()
+        {
+            this.listView1.Items.Clear();
+            String URL = "https://api.twitch.tv/kraken/streams";
+           
+            if(this.selectedGame != null)
+            {
+                URL = URL + "?game=" + Uri.EscapeDataString(this.selectedGame);
+                Cursor.Current = Cursors.WaitCursor;               
+                this.imageList.Images.Clear();
+            }
+
+            string HTML = this.getHTML(URL);
+
+            this.streams = JObject.Parse(HTML);
+            int i = 0;
+            foreach (JToken stream in this.streams["streams"])
+            {
+                //retrieve all image files
+                string imagePath = stream["preview"]["medium"].ToString();
+
+                //Add images to Imagelist
+                WebClient wc = new WebClient();
+                byte[] bytes = wc.DownloadData(imagePath);
+                MemoryStream ms = new MemoryStream(bytes);
+                System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
+                this.imageList.Images.Add(img);
+
+                string st = (stream["channel"]["display_name"] + " playing " + stream["game"] + " for " + stream["viewers"] + " viewers (" + stream["channel"]["status"] + ")");
+                this.listView1.Items.Add(new ListViewItem { ImageIndex = i, Text = st });
+                i++;
+            }
+            this.listView1.Click += new System.EventHandler(this.listView1_Click);
+
+            this.listView1.Columns[0].Width = Width - 4 - SystemInformation.VerticalScrollBarWidth;
+            Cursor.Current = Cursors.Default;
         }
 
             private string getHTML(string URL)
@@ -178,6 +213,14 @@ namespace WindowsFormsApplication1
             this.middleToolStripMenuItem1.Checked = false;
             this.lowToolStripMenuItem1.Checked = true;
             this.quality = "low";
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String game = comboBox1.Text;
+            Console.WriteLine("Selected " + game);
+            this.selectedGame = game;
+            this.loadStreams();
         }
     }
 }
