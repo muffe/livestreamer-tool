@@ -36,6 +36,11 @@
             this.highToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.middleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.qualityToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.sourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.highToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.middleToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.lowToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +63,8 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.qualityToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1118, 24);
@@ -100,6 +107,47 @@
             this.lowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.lowToolStripMenuItem.Text = "Low";
             // 
+            // qualityToolStripMenuItem1
+            // 
+            this.qualityToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sourceToolStripMenuItem,
+            this.highToolStripMenuItem1,
+            this.middleToolStripMenuItem1,
+            this.lowToolStripMenuItem1});
+            this.qualityToolStripMenuItem1.Name = "qualityToolStripMenuItem1";
+            this.qualityToolStripMenuItem1.Size = new System.Drawing.Size(57, 20);
+            this.qualityToolStripMenuItem1.Text = "Quality";
+            // 
+            // sourceToolStripMenuItem
+            // 
+            this.sourceToolStripMenuItem.Checked = true;
+            this.sourceToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.sourceToolStripMenuItem.Name = "sourceToolStripMenuItem";
+            this.sourceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sourceToolStripMenuItem.Text = "Source (best)";
+            this.sourceToolStripMenuItem.Click += new System.EventHandler(this.sourceToolStripMenuItem_Click);
+            // 
+            // highToolStripMenuItem1
+            // 
+            this.highToolStripMenuItem1.Name = "highToolStripMenuItem1";
+            this.highToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.highToolStripMenuItem1.Text = "High";
+            this.highToolStripMenuItem1.Click += new System.EventHandler(this.highToolStripMenuItem1_Click);
+            // 
+            // middleToolStripMenuItem1
+            // 
+            this.middleToolStripMenuItem1.Name = "middleToolStripMenuItem1";
+            this.middleToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.middleToolStripMenuItem1.Text = "Middle";
+            this.middleToolStripMenuItem1.Click += new System.EventHandler(this.middleToolStripMenuItem1_Click);
+            // 
+            // lowToolStripMenuItem1
+            // 
+            this.lowToolStripMenuItem1.Name = "lowToolStripMenuItem1";
+            this.lowToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.lowToolStripMenuItem1.Text = "Low";
+            this.lowToolStripMenuItem1.Click += new System.EventHandler(this.lowToolStripMenuItem1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -128,6 +176,11 @@
         private System.Windows.Forms.ToolStripMenuItem highToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem middleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem qualityToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem sourceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem highToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem middleToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem lowToolStripMenuItem1;
     }
 }
 

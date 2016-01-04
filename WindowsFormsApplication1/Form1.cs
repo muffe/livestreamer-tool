@@ -20,6 +20,8 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+
+        private String quality = "source";
         private JObject streams;
 
         public Form1()
@@ -110,10 +112,13 @@ namespace WindowsFormsApplication1
                 Process process = new Process();
                 // Configure the process using the StartInfo properties.
                 process.StartInfo.FileName = "livestreamer";
-                process.StartInfo.Arguments = "twitch.tv/" + channelName + " source";
+                process.StartInfo.Arguments = "twitch.tv/" + channelName + " " + this.quality;
                 process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 process.Start();
-         }
+                Cursor.Current = Cursors.WaitCursor;
+                System.Threading.Thread.Sleep(5000);
+                Cursor.Current = Cursors.Default;
+            }
            }
 
         public static bool ExistsOnPath(string fileName)
@@ -138,5 +143,41 @@ namespace WindowsFormsApplication1
                 }
                 return null;
             }
+
+        private void sourceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.sourceToolStripMenuItem.Checked = true;
+            this.highToolStripMenuItem1.Checked = false;
+            this.middleToolStripMenuItem1.Checked = false;
+            this.lowToolStripMenuItem1.Checked = false;
+            this.quality = "source";
+        }
+
+        private void highToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.sourceToolStripMenuItem.Checked = false;
+            this.highToolStripMenuItem1.Checked = true;
+            this.middleToolStripMenuItem1.Checked = false;
+            this.lowToolStripMenuItem1.Checked = false;
+            this.quality = "high";
+        }
+
+        private void middleToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.sourceToolStripMenuItem.Checked = false;
+            this.highToolStripMenuItem1.Checked = false;
+            this.middleToolStripMenuItem1.Checked = true;
+            this.lowToolStripMenuItem1.Checked = false;
+            this.quality = "middle";
+        }
+
+        private void lowToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.sourceToolStripMenuItem.Checked = false;
+            this.highToolStripMenuItem1.Checked = false;
+            this.middleToolStripMenuItem1.Checked = false;
+            this.lowToolStripMenuItem1.Checked = true;
+            this.quality = "low";
+        }
     }
 }
