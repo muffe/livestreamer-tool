@@ -19,19 +19,17 @@ C:\Users\muffe\Documents\Visual Studio 2013\Projects\WindowsFormsApplication1\Wi
 C:\Users\muffe\Documents\Visual Studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.application
 C:\Users\muffe\Documents\Visual Studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe.manifest
 C:\Users\muffe\Documents\Visual Studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.application
-C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
 C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
 C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
-C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
 C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
-C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.manifest
-C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.application
-C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
-C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
-C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.dll
 C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\bin\Debug\Twitch.Net.dll
-C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.xml
-C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe.manifest
-C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.application
-C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
-C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\bin\Debug\TwitchStreamer.exe.config
+C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\bin\Debug\TwitchStreamer.exe.manifest
+C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\bin\Debug\TwitchStreamer.application
+C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\bin\Debug\TwitchStreamer.exe
+C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\bin\Debug\TwitchStreamer.pdb
+C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\obj\Debug\TwitchStreamer.Properties.Resources.resources
+C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\obj\Debug\TwitchStreamer.exe.manifest
+C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\obj\Debug\TwitchStreamer.application
+C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\obj\Debug\TwitchStreamer.exe
+C:\Users\muffe\Documents\livestreamer-tool\WindowsFormsApplication1\obj\Debug\TwitchStreamer.pdb

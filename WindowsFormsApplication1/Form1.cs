@@ -43,7 +43,7 @@ namespace WindowsFormsApplication1
             listView1.LargeImageList = Imagelist;
             listView1.SmallImageList = Imagelist;
             listView1.TileSize = new Size(320,400);
-        
+
             if (!ExistsOnPath("livestreamer.exe"))
             {
                 DialogResult res = MessageBox.Show("livestreamer doesn't seem to be installed. We need livestreamer. Do you want to install that now?", "Stop!", MessageBoxButtons.YesNo);
@@ -63,29 +63,29 @@ namespace WindowsFormsApplication1
                     Application.Exit();
                 }
             }
+            else {          
+                string HTML = this.getHTML("https://api.twitch.tv/kraken/streams");
 
+                this.streams = JObject.Parse(HTML);
+                int i = 0;
+                foreach (JToken stream in this.streams["streams"])
+                {
+                    //retrieve all image files
+                    string imagePath = stream["preview"]["medium"].ToString();
 
-            string HTML = this.getHTML("https://api.twitch.tv/kraken/streams");
+                    //Add images to Imagelist
+                    WebClient wc = new WebClient();
+                    byte[] bytes = wc.DownloadData(imagePath);
+                    MemoryStream ms = new MemoryStream(bytes);
+                    System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
+                    Imagelist.Images.Add(img);
 
-            this.streams = JObject.Parse(HTML);
-            int i = 0;
-            foreach(JToken stream in this.streams["streams"])
-            {
-                //retrieve all image files
-                string imagePath = stream["preview"]["medium"].ToString();
-
-                //Add images to Imagelist
-                WebClient wc = new WebClient();
-                byte[] bytes = wc.DownloadData(imagePath);
-                MemoryStream ms = new MemoryStream(bytes);
-                System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
-                Imagelist.Images.Add(img);                
-
-                string st = (stream["channel"]["display_name"] + " playing " + stream["game"] + " for " + stream["viewers"] + " viewers (" + stream["channel"]["status"] + ")");
-                this.listView1.Items.Add(new ListViewItem { ImageIndex = i, Text = st });
-                i++;        
+                    string st = (stream["channel"]["display_name"] + " playing " + stream["game"] + " for " + stream["viewers"] + " viewers (" + stream["channel"]["status"] + ")");
+                    this.listView1.Items.Add(new ListViewItem { ImageIndex = i, Text = st });
+                    i++;
+                }
+                this.listView1.Click += new System.EventHandler(this.listView1_Click);
             }
-            this.listView1.Click += new System.EventHandler(this.listView1_Click);
         }
 
             private string getHTML(string URL)
@@ -106,7 +106,7 @@ namespace WindowsFormsApplication1
                 // Configure the process using the StartInfo properties.
                 process.StartInfo.FileName = "livestreamer";
                 process.StartInfo.Arguments = "twitch.tv/" + channelName + " source";
-                process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 process.Start();
          }
            }
