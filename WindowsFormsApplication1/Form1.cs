@@ -15,15 +15,18 @@ using Twitch.Net.Model;
 using Twitch.Net.Clients;
 using System.IO;
 using System.Net;
+using Microsoft.VisualBasic;
 
 namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
-        
+                
         private JObject streams;
+        private JObject followedStreams;
         private JObject games;
         private ImageList imageList;
+        private ImageList followedImageList;
 
         public string SelectedGame
         {
@@ -35,6 +38,20 @@ namespace WindowsFormsApplication1
             set
             {
                 TwitchStreamer.Properties.Settings.Default.selectedGame = value;
+                TwitchStreamer.Properties.Settings.Default.Save();
+            }
+        }
+
+        public string twitchUsername
+        {
+            get
+            {
+                return TwitchStreamer.Properties.Settings.Default.twitchUsername;
+            }
+
+            set
+            {
+                TwitchStreamer.Properties.Settings.Default.twitchUsername = value;
                 TwitchStreamer.Properties.Settings.Default.Save();
             }
         }
@@ -85,10 +102,29 @@ namespace WindowsFormsApplication1
             this.imageList.ImageSize = new Size(256, 140);
             this.imageList.ColorDepth = ColorDepth.Depth32Bit;
 
+            this.followedImageList = new ImageList();
+            this.followedImageList.ImageSize = new Size(80, 45);
+            this.followedImageList.ColorDepth = ColorDepth.Depth32Bit;
+
             listView1.View = View.Details;
             listView1.LargeImageList = this.imageList;
             listView1.SmallImageList = this.imageList;
             listView1.TileSize = new Size(320, 400);
+
+            listView2.View = View.Details;            
+            listView2.TileSize = new Size(320, 400);
+
+            if (this.twitchUsername.Length == 0)
+            {
+                listView2.LargeImageList = null;
+                listView2.SmallImageList = null;
+                listView2.Items.Add("Set your Twitch username to see your followed channels");
+            } else
+            {
+                listView2.LargeImageList = this.followedImageList;
+                listView2.SmallImageList = this.followedImageList;
+                this.loadFollowedStreams();
+            }
 
             this.getGameList();
             this.setupQualityAndGame();
@@ -191,6 +227,33 @@ namespace WindowsFormsApplication1
             }
            }
 
+        private void listView2_Click(object sender, EventArgs e)
+        {
+            Process[] pname = Process.GetProcessesByName("livestreamer");
+            if (pname.Length != 0)
+            {
+                return;
+            }
+
+            if (listView2.SelectedItems.Count > 0)
+            {
+                int i = listView2.SelectedIndices[0];
+                Console.WriteLine("Selected " + this.followedStreams["streams"][i]["channel"]["display_name"]);
+
+                string channelName = this.followedStreams["streams"][i]["channel"]["name"].ToString();
+
+                Process process = new Process();
+                // Configure the process using the StartInfo properties.
+                process.StartInfo.FileName = "livestreamer";
+                process.StartInfo.Arguments = "twitch.tv/" + channelName + " " + this.Quality;
+                process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                process.Start();
+                Cursor.Current = Cursors.WaitCursor;
+                System.Threading.Thread.Sleep(5000);
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
         public static bool ExistsOnPath(string fileName)
             {
                 if (GetFullPath(fileName) != null)
@@ -290,6 +353,76 @@ namespace WindowsFormsApplication1
             {
                 this.comboBox1.Text = this.SelectedGame;
             }
+        }
+
+        private void twitchUsernameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.twitchUsername = Microsoft.VisualBasic.Interaction.InputBox("Enter your Twitch username to see your followed channels", "Twitch username", "", -1, -1);
+
+            this.followedImageList.ImageSize = new Size(80, 45);
+            listView2.LargeImageList = this.followedImageList;
+            listView2.SmallImageList = this.followedImageList;
+
+            this.loadFollowedStreams();
+        }
+
+        private void loadFollowedStreams()
+        {
+            this.listView2.Items.Clear();
+            this.followedImageList.Images.Clear();
+            String URL = "https://api.twitch.tv/kraken/users/" + this.twitchUsername + "/follows/channels?limit=100";
+            Cursor.Current = Cursors.WaitCursor;
+                 
+            string HTML = this.getHTML(URL);
+
+            this.followedStreams = JObject.Parse(HTML);
+            int i = 0;
+            String queryString = "";
+            foreach (JToken stream in this.followedStreams["follows"])
+            {           
+                if(i == 0)
+                {
+                    queryString = stream["channel"]["display_name"].ToString();
+                } else
+                {
+                    queryString = queryString + "," + stream["channel"]["display_name"].ToString();
+                }
+
+                i++;                
+            }          
+
+            String queryURL = "https://api.twitch.tv/kraken/streams?channel=" + Uri.EscapeDataString(queryString);
+
+            HTML = this.getHTML(queryURL);
+
+            this.followedStreams = JObject.Parse(HTML);
+
+            i = 0;
+            foreach (JToken stream in this.followedStreams["streams"])
+            {
+                //retrieve all image files
+                string imagePath = stream["preview"]["small"].ToString();
+
+                //Add images to Imagelist
+                WebClient wc = new WebClient();
+                byte[] bytes = wc.DownloadData(imagePath);
+                MemoryStream ms = new MemoryStream(bytes);
+                System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
+                this.followedImageList.Images.Add(img);
+
+                string st = (stream["channel"]["display_name"] + " playing " + stream["game"] + " for " + stream["viewers"] + " viewers (" + stream["channel"]["status"] + ")");
+                this.listView2.Items.Add(new ListViewItem { ImageIndex = i, Text = st });
+
+                i++;
+            }
+            this.listView2.Click += new System.EventHandler(this.listView2_Click);
+
+            this.listView2.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.None);
+            this.listView2.Columns[0].Width = Width - 4 - SystemInformation.VerticalScrollBarWidth;
+            this.listView2.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
+
+            Cursor.Current = Cursors.Default;
+
         }
     }
 }

@@ -43,6 +43,10 @@
             this.lowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.twitchUsernameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +61,7 @@
             this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.listView1.Location = new System.Drawing.Point(12, 27);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1094, 666);
+            this.listView1.Size = new System.Drawing.Size(764, 666);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -69,7 +73,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.qualityToolStripMenuItem1});
+            this.qualityToolStripMenuItem1,
+            this.settingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1118, 24);
@@ -92,28 +97,28 @@
             this.sourceToolStripMenuItem.Checked = true;
             this.sourceToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.sourceToolStripMenuItem.Name = "sourceToolStripMenuItem";
-            this.sourceToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.sourceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.sourceToolStripMenuItem.Text = "Source (best)";
             this.sourceToolStripMenuItem.Click += new System.EventHandler(this.sourceToolStripMenuItem_Click);
             // 
             // highToolStripMenuItem1
             // 
             this.highToolStripMenuItem1.Name = "highToolStripMenuItem1";
-            this.highToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.highToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.highToolStripMenuItem1.Text = "High";
             this.highToolStripMenuItem1.Click += new System.EventHandler(this.highToolStripMenuItem1_Click);
             // 
             // middleToolStripMenuItem1
             // 
             this.middleToolStripMenuItem1.Name = "middleToolStripMenuItem1";
-            this.middleToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.middleToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.middleToolStripMenuItem1.Text = "Middle";
             this.middleToolStripMenuItem1.Click += new System.EventHandler(this.middleToolStripMenuItem1_Click);
             // 
             // lowToolStripMenuItem1
             // 
             this.lowToolStripMenuItem1.Name = "lowToolStripMenuItem1";
-            this.lowToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.lowToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.lowToolStripMenuItem1.Text = "Low";
             this.lowToolStripMenuItem1.Click += new System.EventHandler(this.lowToolStripMenuItem1_Click);
             // 
@@ -158,7 +163,7 @@
             this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(76, 3);
+            this.comboBox1.Location = new System.Drawing.Point(139, 3);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(301, 21);
             this.comboBox1.Sorted = true;
@@ -177,11 +182,44 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.twitchUsernameToolStripMenuItem});
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // twitchUsernameToolStripMenuItem
+            // 
+            this.twitchUsernameToolStripMenuItem.Name = "twitchUsernameToolStripMenuItem";
+            this.twitchUsernameToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.twitchUsernameToolStripMenuItem.Text = "Set Twitch username";
+            this.twitchUsernameToolStripMenuItem.Click += new System.EventHandler(this.twitchUsernameToolStripMenuItem_Click);
+            // 
+            // listView2
+            // 
+            this.listView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.listView2.Location = new System.Drawing.Point(782, 27);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(324, 666);
+            this.listView2.TabIndex = 4;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Followed streams";
+            this.columnHeader1.Width = 320;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1118, 705);
+            this.Controls.Add(this.listView2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.listView1);
@@ -214,6 +252,10 @@
         private System.Windows.Forms.ToolStripMenuItem lowToolStripMenuItem1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem twitchUsernameToolStripMenuItem;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }
 

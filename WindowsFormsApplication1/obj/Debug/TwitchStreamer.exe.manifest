@@ -66,14 +66,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwitchStreamer.exe" size="236472">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwitchStreamer.exe" size="240056">
       <assemblyIdentity name="TwitchStreamer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>zcrMPG7bxaJSI8O6fxGfBQoft3slcw/WXA3pWzagsbA=</dsig:DigestValue>
+        <dsig:DigestValue>Ewf4NQVKVxumqckKJwmGIpF8OnX/HfV+k/vWIOhUdQ0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -86,13 +86,13 @@
       <dsig:DigestValue>DnKBIIMoiPS2CrKLlaELmY2fI4Rv/81ohhr+mG0h9wU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="TwitchStreamer.exe.config" size="1353">
+  <file name="TwitchStreamer.exe.config" size="1450">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>bsxgkMwo8e9euElKxZkAaPwU9PG7Qw4GflO26GpUqeI=</dsig:DigestValue>
+      <dsig:DigestValue>x6og+NoSdgCqGySnm2NXCfS5y3QVXPJTJhSWo2bLxPc=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
