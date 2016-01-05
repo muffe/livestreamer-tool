@@ -14,16 +14,16 @@
       </applicationRequestMinimum>
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
         <!--
-          UAC-Manifestoptionen
-          Wenn Sie die Zugangsebene für das Windows-Benutzerkonto ändern möchten, ersetzen Sie den 
-          requestedExecutionLevel-Knoten durch eines der folgenden Elemente.
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
 
         <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
         <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
         <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
 
-         Löschen Sie den requestedExecutionLevel-Knoten, wenn Sie 
-         zum Gewährleisten der Abwärtskompatibilität die Datei- und Registrierungsvirtualisierung verwenden möchten.
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
     -->
         <requestedExecutionLevel level="asInvoker" uiAccess="false" />
       </requestedPrivileges>
@@ -66,14 +66,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwitchStreamer.exe" size="235448">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwitchStreamer.exe" size="236472">
       <assemblyIdentity name="TwitchStreamer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>/CxYfXEHsRq2XAHk4o39sw5UyR5ywTl+jALEGJWJJ7c=</dsig:DigestValue>
+        <dsig:DigestValue>zcrMPG7bxaJSI8O6fxGfBQoft3slcw/WXA3pWzagsbA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -86,13 +86,13 @@
       <dsig:DigestValue>DnKBIIMoiPS2CrKLlaELmY2fI4Rv/81ohhr+mG0h9wU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="TwitchStreamer.exe.config" size="540">
+  <file name="TwitchStreamer.exe.config" size="1353">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>suz6dDfgAOMxCdCCIHOiItnfT21x1uI1HALJTt2Bk5U=</dsig:DigestValue>
+      <dsig:DigestValue>bsxgkMwo8e9euElKxZkAaPwU9PG7Qw4GflO26GpUqeI=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

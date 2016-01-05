@@ -20,12 +20,38 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
-
-        private String quality = "source";
+        
         private JObject streams;
         private JObject games;
-        private String selectedGame = null;
         private ImageList imageList;
+
+        public string SelectedGame
+        {
+            get
+            {
+                return TwitchStreamer.Properties.Settings.Default.selectedGame;
+            }
+
+            set
+            {
+                TwitchStreamer.Properties.Settings.Default.selectedGame = value;
+                TwitchStreamer.Properties.Settings.Default.Save();
+            }
+        }
+
+        public string Quality
+        {
+            get
+            {
+                return TwitchStreamer.Properties.Settings.Default.quality;
+            }
+
+            set
+            {
+                TwitchStreamer.Properties.Settings.Default.quality = value;
+                TwitchStreamer.Properties.Settings.Default.Save();
+            }
+        }
 
         public Form1()
         {
@@ -43,7 +69,7 @@ namespace WindowsFormsApplication1
         private void getGameList()
         {
             string HTML = this.getHTML("https://api.twitch.tv/kraken/games/top?limit=100");
-
+            this.comboBox1.Items.Add("All games");
             this.games = JObject.Parse(HTML);
             foreach (JToken game in this.games["top"])
             {           
@@ -55,9 +81,6 @@ namespace WindowsFormsApplication1
         
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.getGameList();
-            this.MainMenuStrip = this.menuStrip1;
-
             this.imageList = new ImageList();
             this.imageList.ImageSize = new Size(256, 140);
             this.imageList.ColorDepth = ColorDepth.Depth32Bit;
@@ -65,8 +88,12 @@ namespace WindowsFormsApplication1
             listView1.View = View.Details;
             listView1.LargeImageList = this.imageList;
             listView1.SmallImageList = this.imageList;
-            listView1.TileSize = new Size(320,400);
+            listView1.TileSize = new Size(320, 400);
 
+            this.getGameList();
+            this.setupQualityAndGame();
+            this.MainMenuStrip = this.menuStrip1;
+        
             if (!ExistsOnPath("livestreamer.exe"))
             {
                 DialogResult res = MessageBox.Show("livestreamer doesn't seem to be installed. We need livestreamer. Do you want to install that now?", "Stop!", MessageBoxButtons.YesNo);
@@ -94,13 +121,13 @@ namespace WindowsFormsApplication1
         private void loadStreams()
         {
             this.listView1.Items.Clear();
+            this.imageList.Images.Clear();
             String URL = "https://api.twitch.tv/kraken/streams";
-           
-            if(this.selectedGame != null)
+            Cursor.Current = Cursors.WaitCursor;
+
+            if (this.SelectedGame != null)
             {
-                URL = URL + "?game=" + Uri.EscapeDataString(this.selectedGame);
-                Cursor.Current = Cursors.WaitCursor;               
-                this.imageList.Images.Clear();
+                URL = URL + "?game=" + Uri.EscapeDataString(this.SelectedGame);                           
             }
 
             string HTML = this.getHTML(URL);
@@ -155,7 +182,7 @@ namespace WindowsFormsApplication1
                 Process process = new Process();
                 // Configure the process using the StartInfo properties.
                 process.StartInfo.FileName = "livestreamer";
-                process.StartInfo.Arguments = "twitch.tv/" + channelName + " " + this.quality;
+                process.StartInfo.Arguments = "twitch.tv/" + channelName + " " + this.Quality;
                 process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 process.Start();
                 Cursor.Current = Cursors.WaitCursor;
@@ -192,7 +219,7 @@ namespace WindowsFormsApplication1
             this.highToolStripMenuItem1.Checked = false;
             this.middleToolStripMenuItem1.Checked = false;
             this.lowToolStripMenuItem1.Checked = false;
-            this.quality = "source";
+            this.Quality = "source";
         }
 
         private void highToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -201,7 +228,7 @@ namespace WindowsFormsApplication1
             this.highToolStripMenuItem1.Checked = true;
             this.middleToolStripMenuItem1.Checked = false;
             this.lowToolStripMenuItem1.Checked = false;
-            this.quality = "high";
+            this.Quality = "high";
         }
 
         private void middleToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -210,7 +237,7 @@ namespace WindowsFormsApplication1
             this.highToolStripMenuItem1.Checked = false;
             this.middleToolStripMenuItem1.Checked = true;
             this.lowToolStripMenuItem1.Checked = false;
-            this.quality = "middle";
+            this.Quality = "middle";
         }
 
         private void lowToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -219,20 +246,50 @@ namespace WindowsFormsApplication1
             this.highToolStripMenuItem1.Checked = false;
             this.middleToolStripMenuItem1.Checked = false;
             this.lowToolStripMenuItem1.Checked = true;
-            this.quality = "low";
+            this.Quality = "low";
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             String game = comboBox1.Text;
             Console.WriteLine("Selected " + game);
-            this.selectedGame = game;
+            if(game == "All games")
+            {
+                game = null;
+            } 
+            this.SelectedGame = game;
             this.loadStreams();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.loadStreams();
+        }
+
+        private void setupQualityAndGame()
+        {
+            if(this.Quality.Length > 0)
+            {
+                switch(this.Quality)
+                {
+                    case "source":
+                        this.sourceToolStripMenuItem_Click(null, null);
+                        break;
+                    case "high":
+                        this.highToolStripMenuItem1_Click(null, null);
+                        break;
+                    case "middle":
+                        this.middleToolStripMenuItem1_Click(null, null);
+                        break;
+                    case "low":
+                        this.lowToolStripMenuItem1_Click(null, null);
+                        break;
+                }
+            }
+            if(this.SelectedGame.Length > 0)
+            {
+                this.comboBox1.Text = this.SelectedGame;
+            }
         }
     }
 }
