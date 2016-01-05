@@ -125,7 +125,10 @@ namespace WindowsFormsApplication1
             }
             this.listView1.Click += new System.EventHandler(this.listView1_Click);
 
+            this.listView1.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.None);
             this.listView1.Columns[0].Width = Width - 4 - SystemInformation.VerticalScrollBarWidth;
+            this.listView1.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
+                       
             Cursor.Current = Cursors.Default;
         }
 

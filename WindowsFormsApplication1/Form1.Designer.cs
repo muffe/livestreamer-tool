@@ -31,16 +31,16 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.Stream = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.qualityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sourcebestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.highToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.middleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qualityToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.sourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.highToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.middleToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.lowToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.qualityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sourcebestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.highToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.middleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
@@ -49,6 +49,9 @@
             // listView1
             // 
             this.listView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Stream});
             this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
@@ -72,6 +75,47 @@
             this.menuStrip1.Size = new System.Drawing.Size(1118, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // qualityToolStripMenuItem1
+            // 
+            this.qualityToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sourceToolStripMenuItem,
+            this.highToolStripMenuItem1,
+            this.middleToolStripMenuItem1,
+            this.lowToolStripMenuItem1});
+            this.qualityToolStripMenuItem1.Name = "qualityToolStripMenuItem1";
+            this.qualityToolStripMenuItem1.Size = new System.Drawing.Size(57, 20);
+            this.qualityToolStripMenuItem1.Text = "Quality";
+            // 
+            // sourceToolStripMenuItem
+            // 
+            this.sourceToolStripMenuItem.Checked = true;
+            this.sourceToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.sourceToolStripMenuItem.Name = "sourceToolStripMenuItem";
+            this.sourceToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.sourceToolStripMenuItem.Text = "Source (best)";
+            this.sourceToolStripMenuItem.Click += new System.EventHandler(this.sourceToolStripMenuItem_Click);
+            // 
+            // highToolStripMenuItem1
+            // 
+            this.highToolStripMenuItem1.Name = "highToolStripMenuItem1";
+            this.highToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.highToolStripMenuItem1.Text = "High";
+            this.highToolStripMenuItem1.Click += new System.EventHandler(this.highToolStripMenuItem1_Click);
+            // 
+            // middleToolStripMenuItem1
+            // 
+            this.middleToolStripMenuItem1.Name = "middleToolStripMenuItem1";
+            this.middleToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.middleToolStripMenuItem1.Text = "Middle";
+            this.middleToolStripMenuItem1.Click += new System.EventHandler(this.middleToolStripMenuItem1_Click);
+            // 
+            // lowToolStripMenuItem1
+            // 
+            this.lowToolStripMenuItem1.Name = "lowToolStripMenuItem1";
+            this.lowToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.lowToolStripMenuItem1.Text = "Low";
+            this.lowToolStripMenuItem1.Click += new System.EventHandler(this.lowToolStripMenuItem1_Click);
             // 
             // qualityToolStripMenuItem
             // 
@@ -109,47 +153,6 @@
             this.lowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.lowToolStripMenuItem.Text = "Low";
             // 
-            // qualityToolStripMenuItem1
-            // 
-            this.qualityToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sourceToolStripMenuItem,
-            this.highToolStripMenuItem1,
-            this.middleToolStripMenuItem1,
-            this.lowToolStripMenuItem1});
-            this.qualityToolStripMenuItem1.Name = "qualityToolStripMenuItem1";
-            this.qualityToolStripMenuItem1.Size = new System.Drawing.Size(57, 20);
-            this.qualityToolStripMenuItem1.Text = "Quality";
-            // 
-            // sourceToolStripMenuItem
-            // 
-            this.sourceToolStripMenuItem.Checked = true;
-            this.sourceToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.sourceToolStripMenuItem.Name = "sourceToolStripMenuItem";
-            this.sourceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.sourceToolStripMenuItem.Text = "Source (best)";
-            this.sourceToolStripMenuItem.Click += new System.EventHandler(this.sourceToolStripMenuItem_Click);
-            // 
-            // highToolStripMenuItem1
-            // 
-            this.highToolStripMenuItem1.Name = "highToolStripMenuItem1";
-            this.highToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.highToolStripMenuItem1.Text = "High";
-            this.highToolStripMenuItem1.Click += new System.EventHandler(this.highToolStripMenuItem1_Click);
-            // 
-            // middleToolStripMenuItem1
-            // 
-            this.middleToolStripMenuItem1.Name = "middleToolStripMenuItem1";
-            this.middleToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.middleToolStripMenuItem1.Text = "Middle";
-            this.middleToolStripMenuItem1.Click += new System.EventHandler(this.middleToolStripMenuItem1_Click);
-            // 
-            // lowToolStripMenuItem1
-            // 
-            this.lowToolStripMenuItem1.Name = "lowToolStripMenuItem1";
-            this.lowToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.lowToolStripMenuItem1.Text = "Low";
-            this.lowToolStripMenuItem1.Click += new System.EventHandler(this.lowToolStripMenuItem1_Click);
-            // 
             // comboBox1
             // 
             this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
@@ -158,12 +161,14 @@
             this.comboBox1.Location = new System.Drawing.Point(76, 3);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(301, 21);
+            this.comboBox1.Sorted = true;
             this.comboBox1.TabIndex = 2;
             this.comboBox1.Text = "Choose a game (or just start typing)";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(986, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(120, 23);
