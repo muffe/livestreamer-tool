@@ -1,11 +1,5 @@
 # TwitchStreamer
 
-Awesome tool to
-
-  - watch a Twitch.tv Stream
-  - maybe watch another Twitch.tv Stream
-  - watch them all!
-
 ### Current features
 
   - Choose a game from the twitch game list (top 100 currently)
@@ -13,6 +7,12 @@ Awesome tool to
   - Settings are being saved
   - See your followed streams
   - Hiding the livestreamer console
+
+### Awesome tool to
+
+  - watch a Twitch.tv Stream
+  - maybe watch another Twitch.tv Stream
+  - watch them all!
 
 ### Version
 0.1
