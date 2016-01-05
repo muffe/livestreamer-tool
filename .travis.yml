@@ -1,2 +1,6 @@
 language: csharp
 solution: WindowsFormsApplication1.sln
+install:
+  - nuget # lets get version number
+  - nuget restore WindowsFormsApplication1.sln -Verbosity detailed
+  - nuget update WindowsFormsApplication1.sln -Verbosity detailed
