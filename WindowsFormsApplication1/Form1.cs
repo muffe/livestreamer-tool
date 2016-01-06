@@ -148,22 +148,19 @@ namespace WindowsFormsApplication1
                 {
                     Application.Exit();
                 }
-            }
-            else {
-                this.loadStreams();
-            }
+            }           
         }
 
         private void loadStreams()
         {
             this.listView1.Items.Clear();
             this.imageList.Images.Clear();
-            String URL = "https://api.twitch.tv/kraken/streams";
+            String URL = "https://api.twitch.tv/kraken/streams?limit=50";
             Cursor.Current = Cursors.WaitCursor;
 
             if (this.SelectedGame != null)
             {
-                URL = URL + "?game=" + Uri.EscapeDataString(this.SelectedGame);                           
+                URL = URL + "&game=" + Uri.EscapeDataString(this.SelectedGame);                           
             }
 
             string HTML = this.getHTML(URL);
@@ -184,6 +181,7 @@ namespace WindowsFormsApplication1
 
                 string st = (stream["channel"]["display_name"] + " playing " + stream["game"] + " for " + stream["viewers"] + " viewers (" + stream["channel"]["status"] + ")");
                 this.listView1.Items.Add(new ListViewItem { ImageIndex = i, Text = st });
+
                 i++;
             }
             this.listView1.Click += new System.EventHandler(this.listView1_Click);
@@ -352,6 +350,9 @@ namespace WindowsFormsApplication1
             if(this.SelectedGame.Length > 0)
             {
                 this.comboBox1.Text = this.SelectedGame;
+            } else
+            {
+                this.loadStreams();
             }
         }
 
